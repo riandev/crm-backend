@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 const ObjectID = require("mongodb").ObjectID;
 const bodyParser = require("body-parser");
 
@@ -10,7 +11,7 @@ app.use(bodyParser.json());
 const port = 5000;
 
 const MongoClient = require("mongodb").MongoClient;
-const uri = "mongodb://127.0.0.1:27017/fifocrm";
+const uri = "mongodb+srv://hotonion:01939773554op5t@cluster0.rdppk.mongodb.net/fifocrm?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -162,4 +163,4 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(port);
+app.listen(process.env.PORT || port);
